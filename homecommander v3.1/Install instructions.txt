@@ -1,0 +1,29 @@
+Installation:
+
+# Download and install nvm:
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
+
+# in lieu of restarting the shell
+\. "$HOME/.nvm/nvm.sh"
+
+# Download and install Node.js:
+nvm install 16
+
+# Verify the Node.js version:
+node -v # Should print "v16.20.2".
+nvm current # Should print "v16.20.2".
+
+# Verify npm version:
+npm -v # Should print "8.19.4".
+
+# Install modules
+npm install
+
+# Recompile modules for internal Electron 22.3.7 Node.js version (16.20.1)
+npx electron-rebuild -y
+
+# Set launch script run permissions
+chmod +x run.sh
+
+# Launching:
+./run.sh

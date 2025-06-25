@@ -1,0 +1,25 @@
+{
+  "homeAssistant": {
+    "ip": "192.168.1.100",
+    "port": 8123,
+    "token": "jouw_home_assistant_access_token_hier"
+  },
+  "assignments": {
+    "1": {
+      "entityId": "light.woonkamer_lamp",
+      "type": "light",
+      "property": "toggle",
+      "state": "off",
+      "brightness": 0,
+      "color": "#ffffff"
+    },
+    "7": {
+      "entityId": "light.woonkamer_lamp",
+      "type": "light", 
+      "property": "brightness",
+      "state": "off",
+      "brightness": 50,
+      "color": "#ffffff"
+    }
+  }
+}

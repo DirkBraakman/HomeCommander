@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Settings</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 20px;
+        background: white;
+        color: #333;
+        font-family: Arial, sans-serif;
+      }
+
+      h2 {
+        color: #2196f3;
+        margin-bottom: 20px;
+      }
+
+      .form-group {
+        margin-bottom: 15px;
+      }
+      label {
+        display: block;
+        margin-bottom: 5px;
+        color: #666;
+      }
+
+      input {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #e0e0e0;
+        border-radius: 4px;
+        background: #f5f5f5;
+        color: #333;
+        box-sizing: border-box;
+      }
+
+      input:focus {
+        border-color: #2196f3;
+        outline: none;
+      }
+
+      .button-group {
+        margin-top: 20px;
+        display: flex;
+        gap: 10px;
+      }
+
+      button {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 14px;
+      }
+      .reset-btn {
+        background: #f44336;
+        color: white;
+      }
+
+      .save-update-btn {
+        background: #4caf50;
+        color: white;
+      }
+      button:hover {
+        opacity: 0.8;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Home Assistant Settings</h2>
+
+    <div id="settings-form">
+      <div class="form-group">
+        <label for="ha-ip">Server IP:</label>
+        <input type="text" id="ha-ip" placeholder="192.168.1.100" required />
+      </div>
+
+      <div class="form-group">
+        <label for="ha-port">Port:</label>
+        <input
+          type="number"
+          id="ha-port"
+          placeholder="8123"
+          value="8123"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="ha-token">Access Token:</label>
+        <input
+          type="text"
+          id="ha-token"
+          placeholder="Your long access token"
+          required
+        />
+      </div>
+      <div class="button-group">
+        <button type="button" class="reset-btn" id="reset-btn">Reset</button>
+        <button type="button" class="save-update-btn" id="save-update-btn">
+          Save & Update Dashboard
+        </button>
+      </div>
+    </div>
+
+    <script src="settings.js"></script>
+  </body>
+</html>

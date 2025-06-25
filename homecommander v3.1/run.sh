@@ -1,0 +1,10 @@
+#!/bin/bash
+# Set internal pull-up resistors for all GPIO pins (0 to 27) using raspi-gpio
+cd "$(dirname "$0")"
+for PIN in {0..27}; do
+  raspi-gpio set "$PIN" pu
+done
+
+NODE_PATH=$(which node)
+xhost +SI:localuser:root
+sudo -E "$NODE_PATH" node_modules/.bin/electron . --no-sandbox
