@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HomeCommander - Smart Home Control Station</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">🏠 HomeCommander</div>
+            <div class="nav-links">
+                <a href="#home">Home</a>
+                <a href="#features">Features</a>
+                <a href="#demo">Demo</a>
+                <a href="#development">Development</a>
+                <a href="#gallery">Gallery</a>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="hero-title">
+                    <span class="gradient-text">HomeCommander</span>
+                    <br>Smart Home Control Station
+                </h1>
+                <p class="hero-subtitle">
+                    A dedicated Raspberry Pi-powered control station that brings physical interaction back to smart home automation. No smartphone required—just plug in, connect, and control.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#demo" class="btn btn-primary">Try Interactive Demo</a>
+                    <a href="#development" class="btn btn-secondary">View Process</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="img/realised-end-product.jpeg" alt="HomeCommander Physical Device" class="product-image">
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="scroll-arrow">↓</div>
+            <span>Scroll to explore</span>
+        </div>
+    </section>
+
+    <section id="features" class="features-section">
+        <div class="container">
+            <h2 class="section-title">What I Built</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🔌</div>
+                    <h3>Plug & Play</h3>
+                    <p>Just connect power (USB-C) and network (Ethernet/WiFi). No complex setup or scripting required.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🤖</div>
+                    <h3>Native Home Assistant</h3>
+                    <p>Works directly with Home Assistant using only a long-lived token. No additional add-ons needed.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎛️</div>
+                    <h3>Physical Controls</h3>
+                    <p>Rotary encoders for brightness/color, buttons for on/off. Tactile feedback that touchscreens can't provide.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💾</div>
+                    <h3>Config File Based</h3>
+                    <p>All settings and device assignments stored in a simple configuration file for easy backup and modification.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🖥️</div>
+                    <h3>Touchscreen Interface</h3>
+                    <p>7" touchscreen for device assignment, settings, and visual feedback. Works standalone without external devices.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🍓</div>
+                    <h3>Raspberry Pi Powered</h3>
+                    <p>Runs on Raspberry Pi 4 with custom Electron application. Portable and energy-efficient.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="demo" class="demo-section">
+        <div class="container">
+            <h2 class="section-title">Interactive Demo</h2>
+            <p class="section-subtitle">Experience the HomeCommander interface. Click the tabs to switch between the main screens, and interact with the controls!</p>
+            
+            <div class="demo-container">
+                <div class="demo-tabs">
+                    <button class="demo-tab active" data-tab="dashboard">Dashboard</button>
+                    <button class="demo-tab" data-tab="devices">Devices</button>
+                    <button class="demo-tab" data-tab="settings">Settings</button>
+                </div>
+
+                <div id="dashboard-demo" class="demo-content active">
+                    <div class="demo-header">
+                        <div class="demo-ha-info">
+                            <div><strong>HomeCommander:</strong> Home Assistant Dirk</div>
+                            <div class="demo-ha-details">192.168.1.100:8123 - Connected</div>
+                        </div>
+                        <div class="demo-time" id="demo-time">15:30:45</div>
+                    </div>
+                    
+                    <div class="demo-grid">
+                        <div class="demo-control assigned" data-control="1">
+                            <div class="control-title">Rotary 1</div>
+                            <div class="control-status brightness-display" id="brightness-1">80%</div>
+                            <div class="control-value">Living Room Light<br>Brightness</div>
+                        </div>
+                        <div class="demo-control assigned color-control" data-control="2" id="rotary-2-control" style="background: #ff6b35;">
+                            <div class="control-title">Rotary 2</div>
+                            <div class="control-status color-display" id="color-status-2">#ff6b35</div>
+                            <div class="control-value">Kitchen LED Strip<br>Color</div>
+                        </div>
+                        <div class="demo-control assigned" data-control="3">
+                            <div class="control-title">Rotary 3</div>
+                            <div class="control-status brightness-display" id="brightness-3">60%</div>
+                            <div class="control-value">Bedroom Light<br>Brightness</div>
+                        </div>
+                        <div class="demo-control assigned" data-control="4">
+                            <div class="control-title">Button 1</div>
+                            <div class="control-status" id="switch-4">🌑</div>
+                            <div class="control-value">Smart Outlet<br><span id="status-4">Off</span></div>
+                        </div>
+                        <div class="demo-control" data-control="5">
+                            <div class="control-title">Button 2</div>
+                            <div class="control-status"></div>
+                            <div class="control-value">Not assigned</div>
+                        </div>
+                        <div class="demo-control" data-control="6">
+                            <div class="control-title">Button 3</div>
+                            <div class="control-status"></div>
+                            <div class="control-value">Not assigned</div>
+                        </div>
+                    </div>
+
+                    <div class="demo-nav-buttons">
+                        <button class="demo-nav-btn" data-tab="devices" title="Devices">💡</button>
+                        <button class="demo-nav-btn" data-tab="settings" title="Settings">⚙️</button>
+                    </div>
+                </div>
+
+                <div id="devices-demo" class="demo-content">
+                    <div class="devices-header">
+                        <h3>Device Assignment</h3>
+                    </div>
+                    
+                    <div class="devices-list">
+                        <div class="device-item">
+                            <div class="device-name">Living Room Light</div>
+                            <div class="device-id">light.living_room_main</div>
+                            <div class="device-buttons">
+                                <button class="assign-btn assigned" data-device="living_room" data-spot="1">Assigned to Rotary 1</button>
+                                <button class="assign-btn" data-device="living_room" data-spot="brightness">Brightness Control</button>
+                            </div>
+                        </div>
+                        
+                        <div class="device-item">
+                            <div class="device-name">Kitchen LED Strip</div>
+                            <div class="device-id">light.kitchen_led_strip</div>
+                            <div class="device-buttons">
+                                <button class="assign-btn assigned" data-device="kitchen" data-spot="2">Assigned to Rotary 2</button>
+                                <button class="assign-btn" data-device="kitchen" data-spot="color">Color Control</button>
+                            </div>
+                        </div>
+                        
+                        <div class="device-item">
+                            <div class="device-name">Bedroom Light</div>
+                            <div class="device-id">light.bedroom_ceiling</div>
+                            <div class="device-buttons">
+                                <button class="assign-btn assigned" data-device="bedroom" data-spot="3">Assigned to Rotary 3</button>
+                                <button class="assign-btn" data-device="bedroom" data-spot="brightness">Brightness Control</button>
+                            </div>
+                        </div>
+                        
+                        <div class="device-item">
+                            <div class="device-name">Smart Outlet</div>
+                            <div class="device-id">switch.smart_outlet</div>
+                            <div class="device-buttons">
+                                <button class="assign-btn assigned" data-device="smart_outlet" data-spot="4">Assigned to Button 1</button>
+                                <button class="assign-btn" data-device="smart_outlet" data-spot="toggle">Toggle Control</button>
+                            </div>
+                        </div>
+                        
+                        <div class="device-item">
+                            <div class="device-name">Garden Lights</div>
+                            <div class="device-id">switch.garden_lights</div>
+                            <div class="device-buttons">
+                                <button class="assign-btn available" data-device="garden" data-spot="5">Assign to Button 2</button>
+                                <button class="assign-btn" data-device="garden" data-spot="toggle">Toggle Control</button>
+                            </div>
+                        </div>
+                        
+                        <div class="device-item">
+                            <div class="device-name">Coffee Machine</div>
+                            <div class="device-id">switch.coffee_machine</div>
+                            <div class="device-buttons">
+                                <button class="assign-btn available" data-device="coffee" data-spot="6">Assign to Button 3</button>
+                                <button class="assign-btn" data-device="coffee" data-spot="toggle">Toggle Control</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="settings-demo" class="demo-content">
+                    <div class="settings-header">
+                        <h3>Home Assistant Settings</h3>
+                        <button class="settings-nav-btn" title="Toggle Fullscreen">⌨️</button>
+                    </div>
+                    
+                    <div class="settings-form">
+                        <div class="form-group">
+                            <label>Home Assistant IP Address:</label>
+                            <input type="text" value="192.168.1.100" readonly>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Home Assistant Port:</label>
+                            <input type="text" value="8123" readonly>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Long-lived Access Token:</label>
+                            <input type="password" value="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9..." readonly>
+                        </div>
+                        
+                        <div class="form-actions">
+                            <button class="btn btn-primary">Save Configuration</button>
+                            <button class="btn btn-danger">Reset to Defaults</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="development" class="development-section">
+        <div class="container">
+            <h2 class="section-title">Development Journey</h2>
+            <p class="section-subtitle">This project took me through 24 development steps over several months, from initial concept to final product.</p>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h3>Research & Planning</h3>
+                        <p>Created mood boards, explored hardware platforms, and chose Raspberry Pi + Electron as the foundation.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h3>Learning Web Technologies</h3>
+                        <p>Studied HTML, CSS, and JavaScript to build the user interface. Created my first Electron application.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h3>Home Assistant Integration</h3>
+                        <p>Implemented REST API communication with Home Assistant. Built device discovery and control logic.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h3>Hardware Assembly</h3>
+                        <p>Wired rotary encoders, buttons, and touchscreen to Raspberry Pi. Created a functional prototype.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h3>GPIO Integration</h3>
+                        <p>Overcame compatibility issues between Node.js, Electron, and GPIO libraries by downgrading to Pi OS Bullseye.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h3>Final Polish</h3>
+                        <p>Refined the interface, cleaned up code, and created the final HomeCommander v3.1 with full functionality.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery" class="gallery-section">
+        <div class="container">
+            <h2 class="section-title">Project Gallery</h2>
+            
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="img/ui-prototype.png" alt="UI Design Prototype">
+                    <div class="gallery-overlay">
+                        <h3>UI Design Process</h3>
+                        <p>High-fidelity prototypes created in Figma</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item">
+                    <img src="img/breadboard-wiring-close-up.jpeg" alt="Breadboard Wiring">
+                    <div class="gallery-overlay">
+                        <h3>Hardware Assembly</h3>
+                        <p>GPIO wiring with rotary encoders and buttons</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item">
+                    <img src="img/end-product-render.jpeg" alt="Product Render">
+                    <div class="gallery-overlay">
+                        <h3>Product Vision</h3>
+                        <p>3D rendered concept of the final enclosure</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item">
+                    <img src="img/mindmap-project-planning.png" alt="Project Planning">
+                    <div class="gallery-overlay">
+                        <h3>Project Planning</h3>
+                        <p>Initial brainstorming and task breakdown</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item">
+                    <img src="img/moodboard-product.png" alt="Moodboard">
+                    <div class="gallery-overlay">
+                        <h3>Design Inspiration</h3>
+                        <p>Visual direction and aesthetic exploration</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item">
+                    <img src="img/ui-flowchart-breadboarding.png" alt="UI Flowchart">
+                    <div class="gallery-overlay">
+                        <h3>Interface Design</h3>
+                        <p>User flow and interaction planning</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="tech-section">
+        <div class="container">
+            <h2 class="section-title">Technical Implementation</h2>
+            
+            <div class="tech-grid">
+                <div class="tech-card">
+                    <h3>🖥️ Software Stack</h3>
+                    <ul>
+                        <li>Electron v22.3.7 with Node.js 16</li>
+                        <li>HTML5, CSS3, JavaScript</li>
+                        <li>Home Assistant REST API</li>
+                        <li>onoff GPIO library for hardware control</li>
+                    </ul>
+                </div>
+                
+                <div class="tech-card">
+                    <h3>🔧 Hardware Components</h3>
+                    <ul>
+                        <li>Raspberry Pi 4 (4GB RAM)</li>
+                        <li>7" HDMI Touchscreen (1024×600)</li>
+                        <li>3× KY-040 Rotary Encoders</li>
+                        <li>3× Tactile Push Buttons</li>
+                        <li>Full-size Breadboard + T-Cobbler</li>
+                    </ul>
+                </div>
+                
+                <div class="tech-card">
+                    <h3>🏠 Smart Home Integration</h3>
+                    <ul>
+                        <li>Direct Home Assistant API communication</li>
+                        <li>Support for light.* and switch.* entities</li>
+                        <li>Real-time status updates</li>
+                        <li>Long-lived token authentication</li>
+                    </ul>
+                </div>
+                
+                <div class="tech-card">
+                    <h3>⚙️ Configuration & Setup</h3>
+                    <ul>
+                        <li>JSON-based configuration file</li>
+                        <li>No additional Home Assistant add-ons required</li>
+                        <li>Plug-and-play network connectivity</li>
+                        <li>Standalone operation with touchscreen</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-left">
+                    <h3>🏠 HomeCommander</h3>
+                    <p>A showcase project demonstrating smart home control through physical interfaces.</p>
+                    <p><strong>Created by:</strong> Dirk Braakman</p>
+                    <p><strong>Course:</strong> Creative Design & Technology Showcase 2024-2025</p>
+                </div>
+                <div class="footer-right">
+                    <h4>Key Achievements</h4>
+                    <ul>
+                        <li>✓ Native Home Assistant integration</li>
+                        <li>✓ Physical GPIO control implementation</li>
+                        <li>✓ Touchscreen interface design</li>
+                        <li>✓ Raspberry Pi hardware assembly</li>
+                        <li>✓ Full-stack Electron application</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Dirk Braakman - Showcase Portfolio Project</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
