@@ -1,0 +1,52 @@
+body {
+  font-family: Arial, sans-serif;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+}
+
+input {
+  display: block;
+  width: 100%;
+  margin: 10px 0;
+  padding: 8px;
+}
+
+button {
+  padding: 10px 20px;
+  margin: 10px 0;
+  cursor: pointer;
+}
+
+#status-indicator {
+  width: 100%;
+  height: 30px;
+  margin: 20px 0;
+  background-color: gray;
+}
+
+.connected {
+  background-color: green !important;
+}
+
+.disconnected {
+  background-color: red !important;
+}
+
+.hidden {
+  display: none;
+}
+
+#mqtt-log {
+  margin-top: 20px;
+  text-align: left;
+}
+
+#message-log {
+  width: 100%;
+  height: 150px;
+  margin-top: 10px;
+  font-family: monospace;
+  resize: none;
+}

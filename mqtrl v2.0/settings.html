@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>MQTRL Settings</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h1>MQTRL Settings</h1>
+  <div id="connection-form">
+    <input type="text" id="ip" placeholder="IP">
+    <input type="text" id="port" placeholder="Port" value="1883">
+    <input type="text" id="username" placeholder="Username (optional)">
+    <input type="text" id="password" placeholder="Password (optional)">
+    <input type="text" id="ha_api_port" placeholder="Home Assistant API Port" value="8123">
+    <input type="text" id="ha_token" placeholder="Home Assistant Token (Long-Lived)">
+    <div style="display: flex; gap: 10px; justify-content: center;">
+      <button id="test-btn">Test Connection</button>
+      <button id="connect-btn">Connect</button>
+      <button id="reset-btn" style="margin-left:auto;">Reset Settings</button>
+    </div>
+  </div>
+  <div id="test-result"></div>
+  <div id="mqtt-log">
+    <h3>MQTT Messages</h3>
+    <textarea id="message-log" readonly></textarea>
+  </div>
+  <script src="settings.js"></script>
+</body>
+</html>

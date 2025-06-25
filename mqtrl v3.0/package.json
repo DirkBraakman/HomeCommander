@@ -1,0 +1,12 @@
+{
+  "name": "mqtrl",
+  "version": "1.0.0",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "dependencies": {
+    "electron": "^latest",
+    "mqtt": "^4.3.7"
+  }
+}

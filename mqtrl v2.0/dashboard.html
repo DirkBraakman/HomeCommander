@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>MQTRL Dashboard</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    #gear {
+      position: absolute;
+      right: 30px;
+      bottom: 30px;
+      font-size: 2.5rem;
+      cursor: pointer;
+      z-index: 10;
+    }
+    #dashboard-title {
+      position: absolute;
+      left: 30px;
+      top: 20px;
+      font-size: 2rem;
+      font-weight: bold;
+    }
+    #dashboard-info {
+      position: absolute;
+      left: 30px;
+      top: 70px;
+      text-align: left;
+      font-size: 1rem;
+    }
+    #entity-list-container {
+      position: absolute;
+      left: 30px;
+      top: 150px;
+      right: 30px;
+      bottom: 80px;
+      overflow-y: auto;
+      background: #f8f8f8;
+      border-radius: 8px;
+      padding: 10px;
+    }
+    #entity-list {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    #entity-list th, #entity-list td {
+      text-align: left;
+      padding: 8px;
+    }
+    #entity-list th {
+      background-color: #f2f2f2;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div id="dashboard-title"></div>
+  <div id="dashboard-info"></div>
+  <div id="entity-list-container">
+    <table id="entity-list">
+      <thead>
+        <tr>
+          <th>Naam</th>
+          <th>Type</th>
+          <th>Waarde</th>
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+  </div>
+  <div id="gear" title="Instellingen">⚙️</div>
+  <script src="dashboard.js"></script>
+</body>
+</html>

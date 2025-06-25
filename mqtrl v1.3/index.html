@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>MQTRL</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h1>MQTRL Test Version 1.3</h1>
+  
+  <div id="connection-form">
+    <input type="text" id="ip" placeholder="IP" value="test.mosquitto.org">
+    <input type="text" id="port" placeholder="Port" value="1883">
+    <input type="text" id="username" placeholder="Username (optional)">
+    <input type="text" id="password" placeholder="Password (optional)">
+    <button id="connect-btn">Connect</button>
+  </div>
+
+  <div id="status-indicator"></div>
+
+  <div id="test-section" class="hidden">
+    <button id="test-btn">Send Test Message</button>
+    <div id="test-result"></div>
+    
+    <div id="mqtt-log">
+      <h3>MQTT Messages</h3>
+      <textarea id="message-log" readonly></textarea>
+    </div>
+  </div>
+
+  <script src="renderer.js"></script>
+</body>
+</html>

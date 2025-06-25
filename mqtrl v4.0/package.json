@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "electron": "^36.4.0",
+    "mqtt": "^5.13.1"
+  },
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  }
+}

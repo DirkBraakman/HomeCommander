@@ -1,0 +1,16 @@
+{
+  "name": "homecommander",
+  "version": "3.0.0",
+  "description": "Home Assistant controller for Raspberry Pi",
+  "main": "src/main.js",
+  "scripts": {
+    "start": "/home/admin/.config/nvm/versions/node/v16.20.2/bin/node node_modules/.bin/electron . --no-sandbox"
+  },
+  "devDependencies": {
+    "electron": "^22.3.7"
+  },
+  "dependencies": {
+    "axios": "^1.10.0",
+    "onoff": "^6.0.0"
+  }
+}

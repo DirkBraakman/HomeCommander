@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>MQTRL Dashboard</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    #gear {
+      position: absolute;
+      right: 30px;
+      bottom: 30px;
+      font-size: 2.5rem;
+      cursor: pointer;
+      z-index: 10;
+    }
+    #dashboard-title {
+      position: absolute;
+      left: 30px;
+      top: 20px;
+      font-size: 2rem;
+      font-weight: bold;
+    }
+    #dashboard-info {
+      position: absolute;
+      left: 30px;
+      top: 70px;
+      text-align: left;
+      font-size: 1rem;
+    }
+    #devices-btn {
+      position: absolute;
+      right: 80px;
+      bottom: 30px;
+      font-size: 2.5rem;
+      cursor: pointer;
+      z-index: 10;
+    }
+  </style>
+</head>
+<body>
+  <div id="dashboard-title"></div>
+  <div id="dashboard-info"></div>
+  <div id="devices-btn" title="Toon apparaten">📋</div>
+  <div id="gear" title="Instellingen">⚙️</div>
+  <script src="dashboard.js"></script>
+</body>
+</html>

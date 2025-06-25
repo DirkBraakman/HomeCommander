@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>MQTRL Devices</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #fff;
+      margin: 0;
+      padding: 0;
+      text-align: left;
+    }
+    #devices-container {
+      width: 100vw;
+      max-width: 100vw;
+      margin: 40px 0 0 0;
+      padding: 30px 0 20px 0;
+      /* background: #f8f8f8; */ /* Verwijderd */
+      border-radius: 0;
+      box-shadow: none;
+    }
+    #devices-title {
+      font-size: 2rem;
+      font-weight: bold;
+      margin-bottom: 10px;
+      text-align: left;
+      margin-left: 30px;
+    }
+    #devices-info {
+      font-size: 1rem;
+      margin-bottom: 24px;
+      text-align: left;
+      margin-left: 30px;
+    }
+    #entity-list-container {
+      width: calc(100vw - 60px);
+      min-width: 700px;
+      height: 600px;
+      overflow-y: auto;
+      background: #fff;
+      border-radius: 8px;
+      padding: 0;
+      margin: 0 30px 0 30px;
+      box-sizing: border-box;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+    }
+    #entity-list {
+      width: 100%;
+      border-collapse: collapse;
+      table-layout: fixed;
+      min-width: 650px;
+      background: #fff;
+    }
+    #entity-list th, #entity-list td {
+      text-align: left;
+      padding: 10px 8px;
+      overflow-wrap: break-word;
+      word-break: break-all;
+      font-size: 1rem;
+    }
+    #entity-list th {
+      background-color: #f2f2f2;
+      font-weight: bold;
+      cursor: pointer;
+      border-bottom: 2px solid #e0e0e0;
+    }
+    #entity-list tr:nth-child(even) {
+      background: #fafafa;
+    }
+    #entity-list tr:hover {
+      background: #f0f6ff;
+    }
+    #entity-list th[data-sort="name"], #entity-list td:nth-child(1) {
+      width: 32%;
+      max-width: 300px;
+    }
+    #entity-list th[data-sort="type"], #entity-list td:nth-child(2) {
+      width: 18%;
+      max-width: 120px;
+    }
+    #entity-list th[data-sort="value"], #entity-list td:nth-child(3) {
+      width: 30%;
+      max-width: 200px;
+    }
+    #entity-list th:last-child, #entity-list td:last-child {
+      width: 10%;
+      max-width: 60px;
+      text-align: center;
+    }
+    input[type="number"] {
+      width: 48px;
+      padding: 4px;
+      font-size: 1rem;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      text-align: center;
+    }
+    @media (max-width: 900px) {
+      #devices-container {
+        max-width: 100vw;
+        padding: 10px 0;
+      }
+      #entity-list-container {
+        width: 98vw;
+        margin: 0 1vw;
+      }
+      #entity-list {
+        min-width: 600px;
+      }
+      #devices-title, #devices-info {
+        margin-left: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="devices-container">
+    <div style="display: flex; justify-content: space-between; align-items: flex-end; margin: 0 30px 10px 30px;">
+      <div>
+        <div id="devices-title" style="margin-bottom: 0;">Devices</div>
+        <div id="devices-info"></div>
+      </div>
+      <div>
+        <button id="save-spots-btn" style="padding:10px 24px;font-size:1rem;">Save</button>
+        <span id="save-status" style="margin-left:15px;color:green;"></span>
+      </div>
+    </div>
+    <div id="entity-list-container">
+      <table id="entity-list">
+        <thead>
+          <tr>
+            <th data-sort="name">Naam &#x25B2;&#x25BC;</th>
+            <th data-sort="type">Type &#x25B2;&#x25BC;</th>
+            <th data-sort="value">Waarde &#x25B2;&#x25BC;</th>
+            <th>Spot</th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <script src="devices.js"></script>
+</body>
+</html>

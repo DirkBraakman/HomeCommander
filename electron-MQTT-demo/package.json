@@ -1,0 +1,21 @@
+{
+  "name": "electron-mqtt-demo",
+  "version": "1.0.0",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "watch": "nodemon --exec electron .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "Electron app voor MQTT communicatie met Home Assistant",
+  "dependencies": {
+    "electron": "^36.3.1",
+    "mqtt": "^5.13.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  }
+}

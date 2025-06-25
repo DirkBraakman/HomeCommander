@@ -1,0 +1,4 @@
+npm install
+npx electron-rebuild -y
+chmod +x run.sh
+sudo ./run.sh

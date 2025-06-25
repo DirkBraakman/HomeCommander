@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>MQTRL - GPIO Device Assignment</title>
+  <script>
+    console.log('DEVICES.HTML INLINE SCRIPT EXECUTED - HEAD');
+  </script>
+  <style>
+    body { font-family: Arial, sans-serif; background: #f5f5f5; margin: 0; padding: 20px; }
+    .container { max-width: 900px; margin: 0 auto; background: white; border-radius: 8px; padding: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+    h2 { text-align: center; color: #333; margin-bottom: 30px; }
+    
+    .controls-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; margin-bottom: 30px; }
+    .control-spot { background: #f8f9fa; border: 2px dashed #ccc; border-radius: 8px; padding: 15px; text-align: center; min-height: 100px; display: flex; flex-direction: column; justify-content: center; }
+    .control-spot.assigned { background: #e3f2fd; border-color: #2196f3; border-style: solid; }
+    .control-spot.button { border-color: #4caf50; background: #e8f5e8; }
+    .control-spot.rotary { border-color: #ff9800; background: #fff3e0; }
+    .control-spot.slider { border-color: #9c27b0; background: #f3e5f5; }
+    
+    .control-type { font-weight: bold; color: #666; margin-bottom: 5px; text-transform: uppercase; font-size: 12px; }
+    .control-name { font-weight: bold; color: #333; margin-bottom: 5px; }
+    .control-entity { font-size: 11px; color: #666; word-break: break-all; }
+    
+    .assignment-section { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .entities-panel, .assignment-panel { border: 1px solid #ddd; border-radius: 4px; padding: 15px; }
+    .entities-panel h3, .assignment-panel h3 { margin-top: 0; color: #333; }
+    
+    .entities-list { max-height: 400px; overflow-y: auto; }
+    .entity-item { display: flex; justify-content: space-between; align-items: center; padding: 8px; border-bottom: 1px solid #eee; cursor: pointer; }
+    .entity-item:hover { background: #f5f5f5; }
+    .entity-item.selected { background: #e3f2fd; border-color: #2196f3; }
+    
+    .entity-info { flex: 1; }
+    .entity-name { font-weight: bold; color: #333; font-size: 14px; }
+    .entity-id { font-size: 11px; color: #666; }
+    .entity-type { background: #e0e0e0; color: #333; padding: 2px 6px; border-radius: 3px; font-size: 10px; text-transform: uppercase; font-weight: bold; }
+    
+    .assignment-info { background: #f8f9fa; padding: 10px; border-radius: 4px; margin-bottom: 10px; }
+    .control-buttons { display: flex; gap: 10px; flex-wrap: wrap; }
+    
+    .control-btn { padding: 8px 12px; border: none; border-radius: 4px; font-size: 12px; cursor: pointer; font-weight: bold; }
+    .btn-button { background: #4caf50; color: white; }
+    .btn-rotary { background: #ff9800; color: white; }
+    .btn-slider { background: #9c27b0; color: white; }
+    
+    .action-buttons { display: flex; gap: 10px; justify-content: center; margin-top: 20px; }
+    button { padding: 10px 20px; border: none; border-radius: 4px; font-weight: bold; cursor: pointer; }
+    .save-btn { background: #4caf50; color: white; }
+    .reset-btn { background: #f44336; color: white; }
+    
+    .loading { text-align: center; color: #666; padding: 20px; }
+    .error { color: #f44336; background: #ffebee; padding: 10px; border-radius: 4px; margin: 10px 0; }
+  </style>
+</head>
+<body>
+  <script>
+    console.log('DEVICES.HTML INLINE SCRIPT EXECUTED - BODY START');
+  </script>
+  <div class="container">
+    <h2>GPIO Device Assignment for Raspberry Pi</h2>
+    
+    <!-- GPIO Controls Grid -->
+    <div class="controls-grid">
+      <!-- Buttons (GPIO Physical Controls) -->
+      <div class="control-spot button" data-control="button1">
+        <div class="control-type">Button</div>
+        <div class="control-name">Button 1</div>
+        <div class="control-entity" id="button1-entity">Not assigned</div>
+      </div>
+      <div class="control-spot button" data-control="button2">
+        <div class="control-type">Button</div>
+        <div class="control-name">Button 2</div>
+        <div class="control-entity" id="button2-entity">Not assigned</div>
+      </div>
+      <div class="control-spot button" data-control="button3">
+        <div class="control-type">Button</div>
+        <div class="control-name">Button 3</div>
+        <div class="control-entity" id="button3-entity">Not assigned</div>
+      </div>
+      <div class="control-spot button" data-control="button4">
+        <div class="control-type">Button</div>
+        <div class="control-name">Button 4</div>
+        <div class="control-entity" id="button4-entity">Not assigned</div>
+      </div>
+      
+      <!-- Rotary Encoders -->
+      <div class="control-spot rotary" data-control="rotary1">
+        <div class="control-type">Rotary</div>
+        <div class="control-name">Rotary 1</div>
+        <div class="control-entity" id="rotary1-entity">Not assigned</div>
+      </div>
+      <div class="control-spot rotary" data-control="rotary2">
+        <div class="control-type">Rotary</div>
+        <div class="control-name">Rotary 2</div>
+        <div class="control-entity" id="rotary2-entity">Not assigned</div>
+      </div>
+      
+      <!-- Sliders -->
+      <div class="control-spot slider" data-control="slider1">
+        <div class="control-type">Slider</div>
+        <div class="control-name">Slider 1</div>
+        <div class="control-entity" id="slider1-entity">Not assigned</div>
+      </div>
+      <div class="control-spot slider" data-control="slider2">
+        <div class="control-type">Slider</div>
+        <div class="control-name">Slider 2</div>
+        <div class="control-entity" id="slider2-entity">Not assigned</div>
+      </div>
+    </div>
+    
+    <!-- Entity Assignment Section -->
+    <div class="assignment-section">
+      <!-- Available Entities -->
+      <div class="entities-panel">
+        <h3>Available Home Assistant Entities</h3>
+        <div class="entities-list" id="entitiesList">
+          <div class="loading">Loading entities...</div>
+        </div>
+      </div>
+        <!-- Assignment Controls -->
+      <div class="assignment-panel">
+        <h3>Assign Selected Entity</h3>
+        <div id="assignmentInfo" class="assignment-info">
+          Select an entity to see assignment options
+        </div>
+        <div id="assignmentControls" style="display: none;">
+          <p><strong>Compatible controls:</strong></p>
+          <div class="control-buttons" id="controlButtons"></div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Action Buttons -->
+    <div class="action-buttons">
+      <button class="save-btn" id="saveBtn">Save All Assignments</button>
+      <button class="reset-btn" id="resetBtn">Reset All</button>
+    </div>
+  </div>
+  
+  <script src="devices.js"></script>
+  <script>
+    console.log('DEVICES.HTML INLINE SCRIPT EXECUTED - BODY END, AFTER DEVICES.JS');
+  </script>
+</body>
+</html>
