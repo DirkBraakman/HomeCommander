@@ -1,0 +1,12 @@
+{
+  "name": "electron-test-1",
+  "version": "1.0.0",
+  "description": "Beginner fullscreen Electron dashboard",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "devDependencies": {
+    "electron": "^29.3.0"
+  }
+}

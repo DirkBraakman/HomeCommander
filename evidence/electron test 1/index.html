@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home Assistant Controller</title>
+    <style>
+      body {
+        margin: 16px;
+        font-family: Arial, sans-serif;
+        background: #f3f4f6;
+        color: #111;
+      }
+      main {
+        max-width: 360px;
+        display: grid;
+        gap: 16px;
+      }
+      h1 {
+        margin: 0;
+        font-size: 22px;
+      }
+      .note {
+        font-size: 14px;
+        color: #444;
+      }
+      .controls {
+        display: grid;
+        gap: 10px;
+      }
+      .row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 12px;
+        border: 1px solid #cfd3d8;
+        border-radius: 6px;
+        background: #fff;
+      }
+      .label {
+        font-size: 16px;
+      }
+      .action {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      button {
+        padding: 8px 14px;
+        border: 1px solid #111;
+        background: #e5e7eb;
+        cursor: pointer;
+      }
+      .indicator {
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        border: 1px solid #111;
+        background: #e11d48;
+      }
+      .on {
+        background: #16a34a;
+      }
+      footer {
+        margin-top: 24px;
+      }
+      .logo {
+        width: 120px;
+        height: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Home Assistant Controller</h1>
+      <div class="note">Druk op een knop om aan of uit te zetten.</div>
+      <div class="controls">
+        <div class="row" data-state="off">
+          <div class="label">Lampen</div>
+          <div class="action">
+            <button data-action>Toggle</button>
+            <div class="indicator" data-indicator></div>
+          </div>
+        </div>
+        <div class="row" data-state="off">
+          <div class="label">Verwarming</div>
+          <div class="action">
+            <button data-action>Toggle</button>
+            <div class="indicator" data-indicator></div>
+          </div>
+        </div>
+        <div class="row" data-state="off">
+          <div class="label">Beveiliging</div>
+          <div class="action">
+            <button data-action>Toggle</button>
+            <div class="indicator" data-indicator></div>
+          </div>
+        </div>
+      </div>
+      <footer>
+        <img class="logo" src="logo.png" alt="Logo" />
+      </footer>
+    </main>
+    <script>
+      const rows = document.querySelectorAll(".row");
+      rows.forEach((row) => {
+        const button = row.querySelector("[data-action]");
+        const indicator = row.querySelector("[data-indicator]");
+        const setState = (next) => {
+          row.dataset.state = next;
+          const on = next === "on";
+          indicator.classList.toggle("on", on);
+          button.textContent = on ? "Aan" : "Uit";
+        };
+        button.addEventListener("click", () => {
+          const next = row.dataset.state === "on" ? "off" : "on";
+          setState(next);
+        });
+        setState("off");
+      });
+    </script>
+  </body>
+</html>
